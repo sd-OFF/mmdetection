@@ -543,7 +543,7 @@ class AnchorHead(BaseDenseHead, BBoxTestMixin):
         #print(bboxes)
         new_bboxes=bboxes
         for bbox in new_bboxes[0][0]:
-            bbox[4] = bbox[4]* 0.09 + 0.92
+            bbox[4] = max((bbox[4]* 0.09 + 0.92),0.99)
         #print(new_bboxes )    
         new_bboxes = tuple(new_bboxes)
         return self.aug_test_bboxes(feats, img_metas, rescale=rescale)
